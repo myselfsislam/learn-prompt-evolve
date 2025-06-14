@@ -1,5 +1,4 @@
 
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,22 +13,22 @@ const Index = () => {
     {
       icon: <Brain className="w-8 h-8 text-blue-600" />,
       title: "Multi-Provider Coverage",
-      description: "Master prompting for Claude, ChatGPT, Gemini, Perplexity, and more AI services"
+      description: "Comprehensive prompting techniques for Claude, ChatGPT, Gemini, Perplexity, and more AI platforms"
     },
     {
       icon: <Code className="w-8 h-8 text-green-600" />,
-      title: "Interactive Tutorials",
-      description: "Step-by-step guides with real examples and hands-on practice"
+      title: "Prompt Curator",
+      description: "Professional prompt editor with formatting, optimization, and organization tools"
     },
     {
       icon: <Target className="w-8 h-8 text-purple-600" />,
       title: "Advanced Techniques",
-      description: "Chain-of-thought, few-shot learning, role-based prompting, and more"
+      description: "Chain-of-thought, few-shot learning, role-based prompting, and optimization strategies"
     },
     {
       icon: <Sparkles className="w-8 h-8 text-orange-600" />,
       title: "Best Practices",
-      description: "Industry standards, optimization strategies, and proven methodologies"
+      description: "Industry standards, proven methodologies, and expert-level prompting guides"
     }
   ];
 
@@ -49,30 +48,30 @@ const Index = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
             <Zap className="w-4 h-4" />
-            Master AI Prompt Engineering
+            Professional Prompt Engineering Platform
           </div>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             Become a <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Prompt Engineering</span> Expert
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Master the art and science of prompt engineering across all major AI platforms. Discover advanced techniques, 
-            best practices, and get hands-on experience with interactive tutorials.
+            Master the art and science of prompt engineering across all major AI platforms. Create, optimize, and manage 
+            your prompts with our professional curator tool and comprehensive best practices guide.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg" 
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 text-lg"
-              onClick={() => navigate('/best-practices')}
+              onClick={() => navigate('/prompt-curator')}
             >
-              Explore Best Practices <ArrowRight className="w-5 h-5 ml-2" />
+              Try Prompt Curator <Edit3 className="w-5 h-5 ml-2" />
             </Button>
             <Button 
               variant="outline" 
               size="lg" 
               className="px-8 py-3 text-lg border-2 hover:bg-gray-50"
-              onClick={() => navigate('/prompt-curator')}
+              onClick={() => navigate('/best-practices')}
             >
-              Prompt Curator <Edit3 className="w-5 h-5 ml-2" />
+              Explore Best Practices <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </div>
         </div>
@@ -99,7 +98,7 @@ const Index = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Supported AI Platforms</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Discover prompt engineering techniques for all major AI services and their latest models
+              Learn effective prompting techniques for all major AI services and their latest models
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -122,10 +121,37 @@ const Index = () => {
             ))}
           </div>
         </div>
+
+        {/* Key Features Section */}
+        <div className="text-center mb-16">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">What Makes PromptMaster Special</h2>
+          <div className="grid md:grid-cols-3 gap-8 mt-12">
+            <div className="text-center">
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Edit3 className="w-8 h-8 text-blue-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Professional Curator</h3>
+              <p className="text-gray-600">Create, format, optimize and organize your prompts like a code editor with templates and smart optimization</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Lightbulb className="w-8 h-8 text-green-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Expert Guidance</h3>
+              <p className="text-gray-600">Comprehensive best practices and proven techniques used by AI professionals worldwide</p>
+            </div>
+            <div className="text-center">
+              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <BookOpen className="w-8 h-8 text-purple-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Comprehensive Resources</h3>
+              <p className="text-gray-600">Curated collection of tools, documentation, and community resources for continuous learning</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
 export default Index;
-
