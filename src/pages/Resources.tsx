@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -209,14 +210,13 @@ const Resources = () => {
           Explore these resources and begin building your expertise in prompt engineering
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button 
-            size="lg" 
-            variant="secondary"
-            className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 text-lg font-semibold"
+          <a 
+            href="#"
+            className="inline-flex items-center justify-center gap-2 h-11 rounded-md px-8 py-3 text-lg font-semibold border border-white text-white hover:bg-white hover:text-blue-600 transition-colors"
           >
-            <BookOpen className="w-5 h-5 mr-2" />
+            <BookOpen className="w-5 h-5" />
             Start Learning
-          </Button>
+          </a>
           <a 
             href="https://discord.gg/zGWjn6ze" 
             target="_blank" 
