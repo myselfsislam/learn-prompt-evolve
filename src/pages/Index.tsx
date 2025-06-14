@@ -1,9 +1,8 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ArrowRight, Brain, Lightbulb, Target, Users, Zap, BookOpen, Code, Sparkles } from 'lucide-react';
+import { ArrowRight, Brain, Lightbulb, Target, Users, Zap, BookOpen, Code, Sparkles, Edit3 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const Index = () => {
@@ -69,9 +68,9 @@ const Index = () => {
               variant="outline" 
               size="lg" 
               className="px-8 py-3 text-lg border-2 hover:bg-gray-50"
-              onClick={() => navigate('/playground')}
+              onClick={() => navigate('/prompt-curator')}
             >
-              Try Playground <BookOpen className="w-5 h-5 ml-2" />
+              Prompt Curator <Edit3 className="w-5 h-5 ml-2" />
             </Button>
           </div>
         </div>
