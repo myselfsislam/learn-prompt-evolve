@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { 
   Save, 
   Download, 
@@ -23,7 +24,9 @@ import {
   Wand2,
   Code,
   Eye,
-  EyeOff
+  EyeOff,
+  CheckCircle,
+  Info
 } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 
@@ -45,6 +48,13 @@ interface PromptTemplate {
   template: string;
 }
 
+interface OptimizationChange {
+  type: 'added' | 'improved' | 'structured';
+  description: string;
+  before?: string;
+  after?: string;
+}
+
 const Playground = () => {
   const [currentPrompt, setCurrentPrompt] = useState('');
   const [promptTitle, setPromptTitle] = useState('');
@@ -54,6 +64,9 @@ const Playground = () => {
   const [selectedPrompt, setSelectedPrompt] = useState<Prompt | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [isPreviewMode, setIsPreviewMode] = useState(false);
+  const [showOptimizationDialog, setShowOptimizationDialog] = useState(false);
+  const [optimizationChanges, setOptimizationChanges] = useState<OptimizationChange[]>([]);
+  const [originalPrompt, setOriginalPrompt] = useState('');
   const { toast } = useToast();
 
   const categories = [
@@ -170,28 +183,75 @@ Please provide actionable insights and strategic recommendations.`
   };
 
   const optimizePrompt = () => {
-    // Simple optimization - add structure if missing
-    if (!currentPrompt.includes('Context:') && !currentPrompt.includes('Task:')) {
-      const optimized = `Context: [Add context here]
+    const original = currentPrompt;
+    setOriginalPrompt(original);
+    const changes: OptimizationChange[] = [];
 
-Task: ${currentPrompt}
-
-Requirements:
-1. [Add specific requirements]
-2. [Add output format preferences]
-
-Example: [Provide example if helpful]`;
-      setCurrentPrompt(optimized);
+    // Check if prompt already has structure
+    if (original.includes('Context:') && original.includes('Task:')) {
       toast({
-        title: "Prompt Optimized",
-        description: "Added structure to improve prompt effectiveness",
-      });
-    } else {
-      toast({
-        title: "Prompt Already Structured",
+        title: "Prompt Already Optimized",
         description: "Your prompt already has good structure",
       });
+      return;
     }
+
+    let optimized = original;
+    
+    // Add structure if missing
+    if (!original.includes('Context:') && !original.includes('Task:')) {
+      optimized = `Context: [Provide relevant background information here]
+
+Task: ${original}
+
+Requirements:
+1. [Add specific requirements for the output]
+2. [Specify desired format or structure]
+3. [Include any constraints or limitations]
+
+Example: [Provide an example of the expected output if helpful]`;
+
+      changes.push({
+        type: 'structured',
+        description: 'Added structured format with Context, Task, Requirements, and Example sections',
+        before: 'Unstructured prompt',
+        after: 'Structured prompt with clear sections'
+      });
+
+      changes.push({
+        type: 'added',
+        description: 'Added Context section to provide background information',
+      });
+
+      changes.push({
+        type: 'added',
+        description: 'Added Requirements section with numbered list for specific output criteria',
+      });
+
+      changes.push({
+        type: 'added',
+        description: 'Added Example section placeholder to improve AI understanding',
+      });
+    }
+
+    // Check for improvements needed
+    if (original.length < 50) {
+      changes.push({
+        type: 'improved',
+        description: 'Added detailed structure to expand the brief prompt for better AI comprehension',
+      });
+    }
+
+    if (!original.includes('?') && !original.includes('Task:')) {
+      changes.push({
+        type: 'improved',
+        description: 'Clarified the task by moving original content to Task section',
+      });
+    }
+
+    setCurrentPrompt(optimized);
+    setOptimizationChanges(changes);
+    setShowOptimizationDialog(true);
   };
 
   const savePrompt = () => {
@@ -545,6 +605,94 @@ Example: [Provide example if helpful]`;
             </Tabs>
           </div>
         </div>
+
+        {/* Optimization Changes Dialog */}
+        <Dialog open={showOptimizationDialog} onOpenChange={setShowOptimizationDialog}>
+          <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle className="flex items-center gap-2">
+                <Wand2 className="w-5 h-5 text-blue-600" />
+                Prompt Optimization Complete
+              </DialogTitle>
+              <DialogDescription>
+                Here's what the Curator has improved in your prompt to make it more effective:
+              </DialogDescription>
+            </DialogHeader>
+            
+            <div className="space-y-4">
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <CheckCircle className="w-5 h-5 text-green-600" />
+                  <h3 className="font-semibold text-green-800">Optimization Summary</h3>
+                </div>
+                <p className="text-green-700 text-sm">
+                  Applied {optimizationChanges.length} improvements to enhance prompt clarity and effectiveness.
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <h4 className="font-semibold text-gray-900">Changes Made:</h4>
+                {optimizationChanges.map((change, index) => (
+                  <div key={index} className="border rounded-lg p-3 bg-gray-50">
+                    <div className="flex items-start gap-2">
+                      <Info className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2 mb-1">
+                          <Badge 
+                            variant={
+                              change.type === 'added' ? 'default' : 
+                              change.type === 'improved' ? 'secondary' : 'outline'
+                            }
+                            className="text-xs"
+                          >
+                            {change.type.charAt(0).toUpperCase() + change.type.slice(1)}
+                          </Badge>
+                        </div>
+                        <p className="text-sm text-gray-700">{change.description}</p>
+                        {change.before && change.after && (
+                          <div className="mt-2 text-xs">
+                            <span className="text-red-600">Before: {change.before}</span>
+                            <br />
+                            <span className="text-green-600">After: {change.after}</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <h4 className="font-semibold text-blue-800 mb-2">💡 Why These Changes Help:</h4>
+                <ul className="text-sm text-blue-700 space-y-1">
+                  <li>• <strong>Context section:</strong> Provides AI with necessary background information</li>
+                  <li>• <strong>Task section:</strong> Clearly defines what you want the AI to do</li>
+                  <li>• <strong>Requirements:</strong> Specifies output format and quality expectations</li>
+                  <li>• <strong>Example section:</strong> Helps AI understand your desired output style</li>
+                </ul>
+              </div>
+
+              <div className="flex gap-2 pt-4">
+                <Button onClick={() => setShowOptimizationDialog(false)} className="flex-1">
+                  Continue with Optimized Prompt
+                </Button>
+                <Button 
+                  variant="outline" 
+                  onClick={() => {
+                    setCurrentPrompt(originalPrompt);
+                    setShowOptimizationDialog(false);
+                    toast({
+                      title: "Reverted Changes",
+                      description: "Restored your original prompt",
+                    });
+                  }}
+                >
+                  Revert Changes
+                </Button>
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
       </div>
     </div>
   );
