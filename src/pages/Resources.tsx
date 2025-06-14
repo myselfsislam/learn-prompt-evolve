@@ -3,7 +3,7 @@ import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Youtube, Github, BookOpen, Users, Trophy, Briefcase, Star } from 'lucide-react';
+import { ExternalLink, Youtube, Github, BookOpen, Users, Star } from 'lucide-react';
 
 const Resources = () => {
   const youtubeChannels = [
@@ -68,37 +68,6 @@ const Resources = () => {
     }
   ];
 
-  const careerResources = [
-    {
-      title: "AI Product Manager",
-      description: "Lead AI product development and strategy",
-      avgSalary: "$120K - $200K",
-      skills: ["Product Strategy", "Prompt Engineering", "AI/ML Understanding"],
-      icon: <Briefcase className="w-6 h-6 text-blue-600" />
-    },
-    {
-      title: "Prompt Engineer",
-      description: "Specialize in crafting effective prompts for AI systems",
-      avgSalary: "$90K - $160K",
-      skills: ["Advanced Prompting", "AI Model Knowledge", "Testing & Optimization"],
-      icon: <Trophy className="w-6 h-6 text-green-600" />
-    },
-    {
-      title: "AI Consultant",
-      description: "Help businesses implement AI solutions",
-      avgSalary: "$100K - $180K",
-      skills: ["Business Analysis", "AI Implementation", "Client Relations"],
-      icon: <Users className="w-6 h-6 text-purple-600" />
-    },
-    {
-      title: "AI Research Scientist",
-      description: "Advance the field of AI and prompt engineering",
-      avgSalary: "$130K - $250K",
-      skills: ["Research Methods", "Academic Writing", "Model Development"],
-      icon: <Star className="w-6 h-6 text-orange-600" />
-    }
-  ];
-
   const learningPlatforms = [
     {
       name: "DeepLearning.AI",
@@ -130,10 +99,10 @@ const Resources = () => {
     <div className="container mx-auto px-4 py-8">
       <div className="text-center mb-12">
         <h1 className="text-4xl font-bold text-gray-900 mb-4">
-          Career Resources
+          Learning Resources
         </h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Curated resources to help you build a successful career in prompt engineering and AI
+          Curated resources to help you build expertise in prompt engineering and AI
         </p>
       </div>
 
@@ -197,47 +166,6 @@ const Resources = () => {
                       View Repo
                     </a>
                   </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      {/* Career Paths */}
-      <section className="mb-16">
-        <div className="flex items-center gap-3 mb-6">
-          <Briefcase className="w-8 h-8 text-blue-600" />
-          <h2 className="text-2xl font-bold text-gray-900">Career Opportunities</h2>
-        </div>
-        <div className="grid md:grid-cols-2 gap-6">
-          {careerResources.map((career, index) => (
-            <Card key={index} className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <div className="flex items-center gap-3">
-                  {career.icon}
-                  <div>
-                    <CardTitle className="text-lg">{career.title}</CardTitle>
-                    <CardDescription>{career.description}</CardDescription>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm text-gray-600">Average Salary:</span>
-                    <Badge variant="secondary">{career.avgSalary}</Badge>
-                  </div>
-                  <div>
-                    <span className="text-sm text-gray-600 mb-2 block">Key Skills:</span>
-                    <div className="flex flex-wrap gap-2">
-                      {career.skills.map((skill, skillIndex) => (
-                        <Badge key={skillIndex} variant="outline" className="text-xs">
-                          {skill}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
                 </div>
               </CardContent>
             </Card>
