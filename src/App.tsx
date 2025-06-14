@@ -23,7 +23,7 @@ const App = () => (
           <Navigation />
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/playground" element={<Playground />} />
+            <Route path="/prompt-curator" element={<Playground />} />
             <Route path="/best-practices" element={<BestPractices />} />
             <Route path="/resources" element={<Resources />} />
             <Route path="*" element={<NotFound />} />
