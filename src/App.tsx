@@ -6,13 +6,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Index from "./pages/Index";
-import Tutorials from "./pages/Tutorials";
 import Playground from "./pages/Playground";
 import BestPractices from "./pages/BestPractices";
 import Resources from "./pages/Resources";
 import NotFound from "./pages/NotFound";
-import PromptBasics from "./pages/lessons/PromptBasics";
-import ChainOfThought from "./pages/lessons/ChainOfThought";
 
 const queryClient = new QueryClient();
 
@@ -26,12 +23,9 @@ const App = () => (
           <Navigation />
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/tutorials" element={<Tutorials />} />
             <Route path="/playground" element={<Playground />} />
             <Route path="/best-practices" element={<BestPractices />} />
             <Route path="/resources" element={<Resources />} />
-            <Route path="/lessons/prompt-basics" element={<PromptBasics />} />
-            <Route path="/lessons/chain-of-thought" element={<ChainOfThought />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
