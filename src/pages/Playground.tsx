@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -55,7 +54,6 @@ const Playground = () => {
   const [selectedPrompt, setSelectedPrompt] = useState<Prompt | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [isPreviewMode, setIsPreviewMode] = useState(false);
-  const [showLineNumbers, setShowLineNumbers] = useState(true);
   const { toast } = useToast();
 
   const categories = [
@@ -299,11 +297,6 @@ Example: [Provide example if helpful]`;
     prompt.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
-  const getLineNumbers = (text: string) => {
-    const lines = text.split('\n');
-    return lines.map((_, index) => index + 1).join('\n');
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
       <div className="container mx-auto px-4 py-8">
@@ -326,13 +319,6 @@ Example: [Provide example if helpful]`;
                     Prompt Editor
                   </CardTitle>
                   <div className="flex items-center gap-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => setShowLineNumbers(!showLineNumbers)}
-                    >
-                      {showLineNumbers ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-                    </Button>
                     <Button
                       variant="outline"
                       size="sm"
@@ -390,21 +376,14 @@ Example: [Provide example if helpful]`;
                       {currentPrompt || 'No content to preview...'}
                     </div>
                   ) : (
-                    <div className="relative">
-                      {showLineNumbers && (
-                        <div className="absolute left-0 top-0 p-4 bg-gray-100 text-gray-500 text-sm font-mono border-r select-none pointer-events-none z-10 rounded-l-md">
-                          {getLineNumbers(currentPrompt || '\n')}
-                        </div>
-                      )}
-                      <Textarea
-                        id="prompt"
-                        placeholder="Enter your prompt here..."
-                        value={currentPrompt}
-                        onChange={(e) => setCurrentPrompt(e.target.value)}
-                        rows={15}
-                        className={`font-mono text-sm resize-none ${showLineNumbers ? 'pl-16' : ''}`}
-                      />
-                    </div>
+                    <Textarea
+                      id="prompt"
+                      placeholder="Enter your prompt here..."
+                      value={currentPrompt}
+                      onChange={(e) => setCurrentPrompt(e.target.value)}
+                      rows={15}
+                      className="font-mono text-sm resize-none"
+                    />
                   )}
                 </div>
 
