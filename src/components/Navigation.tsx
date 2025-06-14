@@ -2,7 +2,7 @@
 import React from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { Brain, BookOpen, Play, Lightbulb, Menu, X } from 'lucide-react';
+import { Brain, BookOpen, Play, Lightbulb, Menu, X, ExternalLink } from 'lucide-react';
 import { useState } from 'react';
 
 const Navigation = () => {
@@ -15,6 +15,7 @@ const Navigation = () => {
     { path: '/tutorials', label: 'Tutorials', icon: <BookOpen className="w-4 h-4" /> },
     { path: '/playground', label: 'Playground', icon: <Play className="w-4 h-4" /> },
     { path: '/best-practices', label: 'Best Practices', icon: <Lightbulb className="w-4 h-4" /> },
+    { path: '/resources', label: 'Resources', icon: <ExternalLink className="w-4 h-4" /> },
   ];
 
   const isActive = (path: string) => location.pathname === path;

@@ -9,6 +9,7 @@ import Index from "./pages/Index";
 import Tutorials from "./pages/Tutorials";
 import Playground from "./pages/Playground";
 import BestPractices from "./pages/BestPractices";
+import Resources from "./pages/Resources";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/tutorials" element={<Tutorials />} />
             <Route path="/playground" element={<Playground />} />
             <Route path="/best-practices" element={<BestPractices />} />
+            <Route path="/resources" element={<Resources />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
