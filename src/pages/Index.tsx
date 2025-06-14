@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -53,7 +54,7 @@ const Index = () => {
             Become a <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Prompt Engineering</span> Expert
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Master the art and science of prompt engineering across all major AI platforms. Learn advanced techniques, 
+            Master the art and science of prompt engineering across all major AI platforms. Discover advanced techniques, 
             best practices, and get hands-on experience with interactive tutorials.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -97,7 +98,7 @@ const Index = () => {
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Supported AI Platforms</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Learn prompt engineering techniques for all major AI services and their latest models
+              Discover prompt engineering techniques for all major AI services and their latest models
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -133,14 +134,14 @@ const Index = () => {
                 <span className="text-white font-bold text-xl">1</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">Fundamentals</h3>
-              <p className="text-gray-600">Learn the basics of prompt structure, clarity, and effectiveness</p>
+              <p className="text-gray-600">Discover the basics of prompt structure, clarity, and effectiveness</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-white font-bold text-xl">2</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">Advanced Techniques</h3>
-              <p className="text-gray-600">Master chain-of-thought, few-shot learning, and complex reasoning</p>
+              <p className="text-gray-600">Master chain-of-thought, few-shot prompting, and complex reasoning</p>
             </div>
             <div className="text-center">
               <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
