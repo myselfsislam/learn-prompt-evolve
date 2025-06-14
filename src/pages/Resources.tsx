@@ -3,7 +3,7 @@ import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Youtube, Github, BookOpen, Users, Star } from 'lucide-react';
+import { ExternalLink, Youtube, Github, Star, Users, BookOpen } from 'lucide-react';
 
 const Resources = () => {
   const youtubeChannels = [
@@ -65,33 +65,6 @@ const Resources = () => {
       stars: "45K+",
       language: "Python",
       url: "https://github.com/openai/openai-cookbook"
-    }
-  ];
-
-  const learningPlatforms = [
-    {
-      name: "DeepLearning.AI",
-      description: "Courses on AI, machine learning, and prompt engineering",
-      type: "Online Courses",
-      price: "Free & Paid"
-    },
-    {
-      name: "Coursera AI Specializations",
-      description: "University-level courses on AI and machine learning",
-      type: "Specialization",
-      price: "Subscription"
-    },
-    {
-      name: "Hugging Face Learn",
-      description: "Practical AI and NLP courses with hands-on experience",
-      type: "Interactive",
-      price: "Free"
-    },
-    {
-      name: "Fast.ai",
-      description: "Practical deep learning courses for coders",
-      type: "Self-paced",
-      price: "Free"
     }
   ];
 
@@ -165,36 +138,6 @@ const Resources = () => {
                       <ExternalLink className="w-4 h-4 mr-2" />
                       View Repo
                     </a>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      {/* Learning Platforms */}
-      <section className="mb-16">
-        <div className="flex items-center gap-3 mb-6">
-          <BookOpen className="w-8 h-8 text-green-600" />
-          <h2 className="text-2xl font-bold text-gray-900">Learning Platforms</h2>
-        </div>
-        <div className="grid md:grid-cols-2 gap-6">
-          {learningPlatforms.map((platform, index) => (
-            <Card key={index} className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <CardTitle className="text-lg">{platform.name}</CardTitle>
-                <CardDescription>{platform.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex justify-between items-center">
-                  <div className="space-y-1">
-                    <Badge variant="outline">{platform.type}</Badge>
-                    <div className="text-sm text-gray-600">{platform.price}</div>
-                  </div>
-                  <Button variant="outline" size="sm">
-                    <ExternalLink className="w-4 h-4 mr-2" />
-                    Explore
                   </Button>
                 </div>
               </CardContent>
