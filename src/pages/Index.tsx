@@ -60,9 +60,9 @@ const Index = () => {
             <Button 
               size="lg" 
               className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 text-lg"
-              onClick={() => navigate('/tutorials')}
+              onClick={() => navigate('/best-practices')}
             >
-              Start Learning <ArrowRight className="w-5 h-5 ml-2" />
+              Explore Best Practices <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
             <Button 
               variant="outline" 
@@ -160,9 +160,9 @@ const Index = () => {
             size="lg" 
             variant="secondary"
             className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 text-lg font-semibold"
-            onClick={() => navigate('/tutorials')}
+            onClick={() => navigate('/best-practices')}
           >
-            Start Your Journey <ArrowRight className="w-5 h-5 ml-2" />
+            Get Started <ArrowRight className="w-5 h-5 ml-2" />
           </Button>
         </div>
       </div>
