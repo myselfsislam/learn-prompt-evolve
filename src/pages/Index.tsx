@@ -1,4 +1,5 @@
 
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -121,54 +122,10 @@ const Index = () => {
             ))}
           </div>
         </div>
-
-        {/* Learning Path */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 mb-16 border-0 shadow-lg">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Your Learning Journey</h2>
-            <p className="text-lg text-gray-600">Follow our structured path from beginner to expert</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">1</span>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Fundamentals</h3>
-              <p className="text-gray-600">Discover the basics of prompt structure, clarity, and effectiveness</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">2</span>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Advanced Techniques</h3>
-              <p className="text-gray-600">Master chain-of-thought, few-shot prompting, and complex reasoning</p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white font-bold text-xl">3</span>
-              </div>
-              <h3 className="text-xl font-semibold mb-2">Expert Level</h3>
-              <p className="text-gray-600">Optimize for specific use cases and build production-ready prompts</p>
-            </div>
-          </div>
-        </div>
-
-        {/* CTA Section */}
-        <div className="text-center bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl p-12 text-white">
-          <h2 className="text-3xl font-bold mb-4">Ready to Master Prompt Engineering?</h2>
-          <p className="text-xl mb-8 opacity-90">Join thousands of developers and researchers improving their AI interactions</p>
-          <Button 
-            size="lg" 
-            variant="secondary"
-            className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 text-lg font-semibold"
-            onClick={() => navigate('/best-practices')}
-          >
-            Get Started <ArrowRight className="w-5 h-5 ml-2" />
-          </Button>
-        </div>
       </div>
     </div>
   );
 };
 
 export default Index;
+
