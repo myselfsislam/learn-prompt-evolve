@@ -1,5 +1,5 @@
-
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -8,12 +8,22 @@ import { Progress } from "@/components/ui/progress";
 import { BookOpen, Clock, Users, CheckCircle, ArrowRight, Brain, Code, Target, Lightbulb } from 'lucide-react';
 
 const Tutorials = () => {
+  const navigate = useNavigate();
   const [completedLessons, setCompletedLessons] = useState<string[]>([]);
 
   const markComplete = (lessonId: string) => {
     if (!completedLessons.includes(lessonId)) {
       setCompletedLessons([...completedLessons, lessonId]);
     }
+  };
+
+  const getLessonUrl = (lessonId: string) => {
+    const lessonRoutes: Record<string, string> = {
+      'prompt-basics': '/lessons/prompt-basics',
+      'chain-of-thought': '/lessons/chain-of-thought',
+      // More lessons can be added here as they're created
+    };
+    return lessonRoutes[lessonId] || null;
   };
 
   const fundamentals = [
@@ -119,6 +129,16 @@ const Tutorials = () => {
 
   const LessonCard = ({ lesson, category }: { lesson: any, category: string }) => {
     const isCompleted = completedLessons.includes(lesson.id);
+    const lessonUrl = getLessonUrl(lesson.id);
+    
+    const handleLessonClick = () => {
+      if (lessonUrl) {
+        navigate(lessonUrl);
+      } else {
+        // For lessons without pages yet, just mark as complete
+        markComplete(lesson.id);
+      }
+    };
     
     return (
       <Card className="hover:shadow-lg transition-all duration-300 border-l-4 border-l-blue-500">
@@ -159,9 +179,9 @@ const Tutorials = () => {
           <Button 
             className="w-full" 
             variant={isCompleted ? "outline" : "default"}
-            onClick={() => markComplete(lesson.id)}
+            onClick={handleLessonClick}
           >
-            {isCompleted ? 'Review Lesson' : 'Start Lesson'} 
+            {lessonUrl ? (isCompleted ? 'Review Lesson' : 'Start Lesson') : 'Coming Soon'} 
             <ArrowRight className="w-4 h-4 ml-2" />
           </Button>
         </CardContent>
@@ -174,8 +194,8 @@ const Tutorials = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
+      
       <div className="container mx-auto px-4 py-8">
-        {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Prompt Engineering Tutorials</h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6">
@@ -189,6 +209,8 @@ const Tutorials = () => {
             <Progress value={progressPercentage} className="h-2" />
           </div>
         </div>
+
+        
 
         <Tabs defaultValue="fundamentals" className="w-full">
           <TabsList className="grid w-full grid-cols-3 mb-8">
@@ -243,7 +265,8 @@ const Tutorials = () => {
           </TabsContent>
         </Tabs>
 
-        {/* Learning Tips */}
+        
+
         <div className="mt-16 bg-white/80 backdrop-blur-sm rounded-2xl p-8 border-0 shadow-lg">
           <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Learning Tips</h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">

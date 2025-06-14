@@ -11,6 +11,8 @@ import Playground from "./pages/Playground";
 import BestPractices from "./pages/BestPractices";
 import Resources from "./pages/Resources";
 import NotFound from "./pages/NotFound";
+import PromptBasics from "./pages/lessons/PromptBasics";
+import ChainOfThought from "./pages/lessons/ChainOfThought";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +30,8 @@ const App = () => (
             <Route path="/playground" element={<Playground />} />
             <Route path="/best-practices" element={<BestPractices />} />
             <Route path="/resources" element={<Resources />} />
+            <Route path="/lessons/prompt-basics" element={<PromptBasics />} />
+            <Route path="/lessons/chain-of-thought" element={<ChainOfThought />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
