@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -218,17 +217,15 @@ const Resources = () => {
             <BookOpen className="w-5 h-5 mr-2" />
             Start Learning
           </Button>
-          <Button 
-            size="lg" 
-            variant="outline"
-            className="border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3 text-lg font-semibold"
-            asChild
+          <a 
+            href="https://discord.gg/zGWjn6ze" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 h-11 rounded-md px-8 py-3 text-lg font-semibold border border-white text-white hover:bg-white hover:text-blue-600 transition-colors"
           >
-            <a href="https://discord.gg/zGWjn6ze" target="_blank" rel="noopener noreferrer">
-              <Users className="w-5 h-5 mr-2" />
-              Join Community
-            </a>
-          </Button>
+            <Users className="w-5 h-5" />
+            Join Community
+          </a>
         </div>
       </div>
     </div>
